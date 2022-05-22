@@ -19,16 +19,25 @@ export const contactsSlice = createSlice({
 
 export const contactsApi = createApi({
   reducerPath: 'contacts',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://62812fd61020d85205867d76.mockapi.io' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://connections-api.herokuapp.com/contacts' ,prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.token;
+
+    // If we have a token set in state, let's assume that we should be passing it.
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`)
+    }
+
+    return headers
+  }}),
   tagTypes: ['Contacts'],
   endpoints: (builder) => ({
     getContacts: builder.query({
-      query: () => `/contacts`,
+      query: () => ``,
       providesTags: ['Contacts']
     }),
     addContact: builder.mutation({
       query: (contact) => ({
-        url: `/contacts`,
+        url: ``,
         method: 'POST',
         body: contact,
       }),
@@ -36,7 +45,7 @@ export const contactsApi = createApi({
     }),
     deleteContact: builder.mutation({
       query: (id) => ({
-        url: `/contacts/${id}`,
+        url: `/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Contacts']

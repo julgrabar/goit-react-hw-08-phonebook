@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
     *{
@@ -6,9 +7,7 @@ export const Global = createGlobalStyle`
     }
 
     body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        
         background-color: #000066;
         color: #ffffff
     }
@@ -22,4 +21,14 @@ export const Global = createGlobalStyle`
     .filter{
         width: 100%;
     }
-`
+
+`;
+
+export const Container = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
