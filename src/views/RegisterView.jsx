@@ -1,5 +1,42 @@
-import { SignupForm } from 'components/SignupForm/SignupForm';
+import { StyledForm } from 'components/Contact form/ContactForm.styled';
+import { Formik, Field } from 'formik';
+import { useSignupMutation } from 'redux/auth/authAPI';
 
-export const RegisterPage = () => {
-  return <SignupForm />;
+const RegisterPage = () => {
+  const [signupUser] = useSignupMutation();
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    signupUser(values);
+    resetForm();
+  };
+
+  return (
+    <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+      <StyledForm>
+        <label>
+          <p>User Name</p>
+          <Field type="text" name="name" required />
+        </label>
+
+        <label>
+          <p>e-mail</p>
+          <Field type="email" name="email" required />
+        </label>
+
+        <label>
+          <p>Password</p>
+          <Field type="password" name="password" required />
+        </label>
+        <button type="submit">Sign up</button>
+      </StyledForm>
+    </Formik>
+  );
 };
+
+export default RegisterPage;

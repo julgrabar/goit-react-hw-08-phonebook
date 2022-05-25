@@ -8,10 +8,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
-import { authApi, persistedReducer } from "./authSlice";
-import { contactsApi } from "./contactsSlice";
-import { filterReducer } from "./contactsSlice";
-
+import { authApi } from "./auth/authAPI";
+import { persistedReducer } from "./auth/authSlice";
+import { contactsApi } from "./contacts/contactsAPI";
+import { filterReducer } from "./contacts/contactsSlice";
 
 
 export const store = configureStore({

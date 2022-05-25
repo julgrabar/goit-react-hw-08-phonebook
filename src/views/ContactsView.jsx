@@ -1,20 +1,13 @@
-// import { ContactForm } from './Contact form/ContactForm';
-// import { ContactList } from './Contact list/ContactList';
-// import { Filter } from './Filter/Filter';
-// import { Container } from './Global';
-// import { useGetContactsQuery } from 'redux/contactsSlice';
-// import { Loader } from './Loader/Loader.stayled';
-// import { useSelector } from 'react-redux';
-
 import { ContactForm } from 'components/Contact form/ContactForm';
 import { ContactList } from 'components/Contact list/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container } from 'components/Global';
 import { Loader } from 'components/Loader/Loader.stayled';
 import { useSelector } from 'react-redux';
-import { getFilterValue, useGetContactsQuery } from 'redux/contactsSlice';
+import { useGetContactsQuery } from 'redux/contacts/contactsAPI';
+import { getFilterValue } from 'redux/contacts/contactsSlice';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const { data: contacts, error, isLoading } = useGetContactsQuery();
   const filterValue = useSelector(getFilterValue);
 
@@ -41,3 +34,5 @@ export const ContactsPage = () => {
     </Container>
   );
 };
+
+export default ContactsPage;

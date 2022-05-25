@@ -1,6 +1,6 @@
 import { Loader } from 'components/Loader/Loader.stayled';
 import PropTypes from 'prop-types';
-import { useDeleteContactMutation } from 'redux/contactsSlice';
+import { useDeleteContactMutation } from 'redux/contacts/contactsAPI';
 
 export const ContactsItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();

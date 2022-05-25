@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getIsLogged, getUser, useLogoutMutation } from 'redux/authSlice';
+import { getIsLogged, getUser } from 'redux/auth/authSlice';
+import { useLogoutMutation } from 'redux/auth/authAPI';
 import { UserBar } from './AppBar.styled';
 import { Nav } from './AppBar.styled';
 
@@ -8,11 +9,6 @@ export const Navigation = () => {
   const isUserLogged = useSelector(getIsLogged);
   const { name } = useSelector(getUser);
   const [logout] = useLogoutMutation();
-
-  // const handleLogOut = () =>{
-  //   logout;
-  //   Navigate
-  // }
 
   return (
     <Nav>

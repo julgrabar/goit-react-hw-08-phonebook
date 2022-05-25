@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { getIsLogged } from 'redux/authSlice';
+import { getIsLogged } from 'redux/auth/authSlice';
 
 export const PublicRoute = ({ children, restricted }) => {
   const isLogged = useSelector(getIsLogged);

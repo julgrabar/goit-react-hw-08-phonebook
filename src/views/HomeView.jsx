@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getIsLogged, getUser } from 'redux/authSlice';
+import { getIsLogged, getUser } from 'redux/auth/authSlice';
 
-export const HomePage = () => {
+const HomePage = () => {
   const isLogged = useSelector(getIsLogged);
   const { name } = useSelector(getUser);
   return (
@@ -19,3 +19,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;
